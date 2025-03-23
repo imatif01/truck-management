@@ -2,44 +2,74 @@ import styled from 'styled-components';
 
 export const StyledSettings = styled.div`
   .col {
-    width: 70%;
     background: var(--white);
     border-radius: 10px;
     box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
     margin: 0 auto;
+
+    @media (min-width: 1400px) {
+      width: 70%;
+    }
 
     &:not(:last-child) {
       margin: 0 auto 20px;
     }
 
     .head {
-      padding: 10px 25px;
+      padding: 10px 20px;
       border-bottom: 1px solid var(--border-color);
+
       @media (min-width: 1400px) {
         padding: 10px 35px;
       }
 
       .heading {
         display: block;
-        font-size: 20px;
-        line-height: 24px;
+        font-size: 18px;
+        line-height: 22px;
         font-weight: 500;
         color: var(--black);
+
+        @media (min-width: 768px) {
+          font-size: 20px;
+          line-height: 24px;
+        }
+      }
+
+      .text {
+        @media (max-width: 767px) {
+          font-size: 14px;
+          line-height: 18px;
+        }
       }
     }
 
     .content-holder {
-      padding: 25px 35px;
+      padding: 20px;
+      @media (min-width: 1400px) {
+        padding: 25px 35px;
+      }
 
       .content {
-        display: flex;
-        align-items: center;
-        gap: 90px;
-        margin: 0 0 35px;
+        margin: 0 0 25px;
+
+        @media (min-width: 768px) {
+          display: flex;
+          align-items: center;
+          gap: 20px;
+          margin: 0 0 35px;
+        }
+        @media (min-width: 992px) {
+          gap: 90px;
+        }
 
         .text-holder {
           width: 100%;
           max-width: 250px;
+          margin: 0 0 10px;
+          @media (min-width: 768px) {
+            margin: 0;
+          }
 
           .title {
             display: block;
@@ -124,6 +154,19 @@ export const StyledSettings = styled.div`
 
       .btn-holder {
         gap: 10px;
+        justify-content: flex-start;
+        @media (max-width: 575px) {
+          display: block;
+        }
+
+        button {
+          @media (max-width: 575px) {
+            width: 100%;
+            &:not(:last-child) {
+              margin: 0 0 10px;
+            }
+          }
+        }
       }
     }
   }
