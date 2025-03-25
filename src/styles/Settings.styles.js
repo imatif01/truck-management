@@ -16,11 +16,11 @@ export const StyledSettings = styled.div`
     }
 
     .head {
-      padding: 10px 20px;
+      padding: 12px 20px;
       border-bottom: 1px solid var(--border-color);
 
       @media (min-width: 1400px) {
-        padding: 10px 35px;
+        padding: 15px 35px;
       }
 
       .heading {
