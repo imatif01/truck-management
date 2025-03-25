@@ -113,14 +113,79 @@ export const StyledSettings = styled.div`
 
   .security-col {
     .content {
+      &:first-child {
+        align-items: flex-start;
+      }
+
       .text-holder {
         max-width: 280px !important;
+      }
+
+      .table-and-filter {
+        width: 100%;
+
+        table {
+          min-width: 100%;
+
+          th,
+          td {
+            font-size: 16px;
+            line-height: 20px;
+            background: var(--gray);
+            padding: 10px 12px;
+            border: 1px solid var(--border-color);
+            @media (max-width: 575px) {
+              font-size: 14px;
+              line-height: 18px;
+            }
+          }
+
+          td {
+            background: var(--white);
+            &:not(:last-child) {
+              @media (max-width: 767px) {
+                border-bottom: 0;
+              }
+            }
+          }
+
+          tr {
+            border-bottom: 0;
+            padding: 0;
+          }
+        }
+        .pagination {
+          padding: 10px 0;
+        }
+
+        .status-holder {
+          display: flex;
+          align-items: center;
+          justify-content: flex-end;
+          gap: 10px;
+
+          @media (min-width: 768px) {
+            justify-content: space-between;
+          }
+
+          .status {
+            padding: 0;
+            &.Active {
+              color: var(--success);
+            }
+
+            &.InActive {
+              color: var(--danger);
+            }
+          }
+        }
       }
       .search-holder {
         display: flex;
         align-items: center;
         flex-grow: 1;
         gap: 10px;
+        margin: 0 0 20px;
 
         .filter-btn {
           display: flex;

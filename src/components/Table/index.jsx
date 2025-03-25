@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { StyledTable } from './Table.styles';
 import { IoIosArrowBack, IoIosArrowForward } from 'react-icons/io';
 
-const Table = ({ columns, rowsData, rowsPerPage = 5, minWidth }) => {
+const Table = ({ columns, rowsData, noOverflow, rowsPerPage = 5, minWidth }) => {
   const [currentPage, setCurrentPage] = useState(1);
   const totalPages = Math.ceil(rowsData.length / rowsPerPage);
 
@@ -11,7 +11,7 @@ const Table = ({ columns, rowsData, rowsPerPage = 5, minWidth }) => {
   const paginatedData = rowsData.slice(startIndex, startIndex + rowsPerPage);
   return (
     <>
-      <StyledTable $minWidth={minWidth}>
+      <StyledTable $minWidth={minWidth} $noOverflow={noOverflow}>
         <table>
           <thead>
             <tr>

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useMemo } from 'react';
 import Button from '@/components/Button';
 import HeadingSection from '@/components/HeadingSection';
 import Input from '@/components/Input';
@@ -9,10 +9,16 @@ import DropDown from '@/components/DropDown/DropDown';
 import importIcon from '@/assets/images/import-icon.svg';
 import { FaSlidersH } from 'react-icons/fa';
 import Image from 'next/image';
+import Table from '@/components/Table';
+import { BsThreeDotsVertical } from 'react-icons/bs';
+import { FiEdit } from 'react-icons/fi';
+import { RiDeleteBin6Line } from 'react-icons/ri';
 
 const Setting = () => {
   const [switchTab, setSwitchTab] = useState(2);
   const [dropDown, setDropDown] = useState(false);
+  const [action, setAction] = useState(null);
+
   const {
     register,
     handleSubmit,
@@ -32,6 +38,67 @@ const Setting = () => {
     { value: 'EST', label: 'EST' },
     { value: 'IST', label: 'IST' },
   ];
+
+  function handleStatusTag(status, index) {
+    return (
+      <div className="status-holder">
+        <span className={`status ${status}`}>{status}</span>
+        <DropDown
+          isOpen={action === index}
+          toggleDropdown={() => setAction(action === index ? null : index)}
+          top="20px"
+          button={<BsThreeDotsVertical className="icon" />}
+        >
+          <div className="order-action" onClick={() => setAction(false)}>
+            <div className="edit">
+              <FiEdit />
+              <span>Edit</span>
+            </div>
+            <div className="delete">
+              <RiDeleteBin6Line />
+              <span>Delete</span>
+            </div>
+          </div>
+        </DropDown>
+      </div>
+    );
+  }
+
+  const orderData = [
+    {
+      userName: 'John Doe',
+      role: 'Dispatcher',
+      status: 'Active',
+    },
+    {
+      userName: 'John Doe',
+      role: 'Dispatcher',
+      status: 'Active',
+    },
+    {
+      userName: 'John Doe',
+      role: 'Dispatcher',
+      status: 'InActive',
+    },
+    {
+      userName: 'John Doe',
+      role: 'Dispatcher',
+      status: 'Active',
+    },
+  ];
+
+  const columns = ['User Name', 'Role', 'Status'];
+
+  const { rowsData } = useMemo(() => {
+    return {
+      rowsData: orderData?.map((item, index) => [
+        item?.userName,
+        item?.userName,
+        handleStatusTag(item?.status, index),
+      ]),
+      totalCount: orderData?.length,
+    };
+  }, [orderData]);
 
   return (
     <StyledSettings>
@@ -126,34 +193,37 @@ const Setting = () => {
               <span className="title">User Role Management</span>
               <span className="text">Control access and permissions for team members.</span>
             </div>
-            <div className="search-holder">
-              <Input
-                type="text"
-                placeholder="Search by user role"
-                {...register('search')}
-                bgGray
-                noRounded
-                noMargin
-              />
-              <div className="dropDown-holder">
-                <DropDown
-                  isOpen={dropDown}
-                  toggleDropdown={() => setDropDown(!dropDown)}
-                  top="50px"
-                  button={
-                    <button className="filter-btn">
-                      Filters
-                      <FaSlidersH />
-                    </button>
-                  }
-                >
-                  <ul className="roles-dropDown">
-                    <li>Driver</li>
-                    <li>Dispatcher</li>
-                    <li>Admin</li>
-                  </ul>
-                </DropDown>
+            <div className="table-and-filter">
+              <div className="search-holder">
+                <Input
+                  type="text"
+                  placeholder="Search by user role"
+                  {...register('search')}
+                  bgGray
+                  noRounded
+                  noMargin
+                />
+                <div className="dropDown-holder">
+                  <DropDown
+                    isOpen={dropDown}
+                    toggleDropdown={() => setDropDown(!dropDown)}
+                    top="50px"
+                    button={
+                      <button className="filter-btn">
+                        Filters
+                        <FaSlidersH />
+                      </button>
+                    }
+                  >
+                    <ul className="roles-dropDown">
+                      <li>Driver</li>
+                      <li>Dispatcher</li>
+                      <li>Admin</li>
+                    </ul>
+                  </DropDown>
+                </div>
               </div>
+              <Table columns={columns} rowsData={rowsData} rowsPerPage={6} noOverflow />
             </div>
           </div>
           <div className="content">

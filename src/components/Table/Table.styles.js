@@ -2,8 +2,8 @@ import styled from 'styled-components';
 
 export const StyledTable = styled.div`
   width: 100%;
-  overflow-x: auto;
-  overflow-y: hidden;
+  overflow-x: ${({ $noOverflow }) => ($noOverflow ? 'none' : 'auto')};
+  overflow-y: ${({ $noOverflow }) => ($noOverflow ? 'none' : 'hidden')};
 
   table {
     margin: 0;
@@ -14,7 +14,7 @@ export const StyledTable = styled.div`
     border-collapse: collapse;
 
     @media (min-width: 768px) {
-      min-width: ${({ $minWidth }) => ($minWidth ? $minWidth : '1400px')};
+      min-width: ${({ $minWidth }) => $minWidth || '1400px'};
     }
   }
 

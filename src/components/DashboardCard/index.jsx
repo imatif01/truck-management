@@ -6,7 +6,7 @@ const DashboardCard = ({ arr }) => {
   return (
     <>
       {arr?.map((item, index) => (
-        <StyledCard $iconBg={item?.iconBg}>
+        <StyledCard $iconBg={item?.iconBg} key={index}>
           <figure className="icon-holder">
             <Image src={item?.icon} alt="Icon" width={30} height={30} />
           </figure>
