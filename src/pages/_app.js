@@ -79,7 +79,7 @@ export const GlobalStyle = createGlobalStyle`
   #wrapper {
     width: 100%;
     position: relative;
-    padding: 100px 15px 20px;
+    padding: 90px 15px 20px;
     overflow: hidden;
     
     @media(min-width: 576px){

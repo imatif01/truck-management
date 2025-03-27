@@ -71,7 +71,7 @@ const SignUp = () => {
                     error={errors.phone?.message}
                   />
                 </div>
-                <div className="input-wrap">
+                {/* <div className="input-wrap">
                   <Input
                     type="date"
                     label="Date of Birth"
@@ -112,7 +112,7 @@ const SignUp = () => {
                       </div>
                     </div>
                   </div>
-                </div>
+                </div> */}
                 <div className="input-wrap">
                   <Input
                     type="text"
@@ -133,7 +133,7 @@ const SignUp = () => {
                     error={errors.occupation?.message}
                   />
                 </div>
-                <div className="input-wrap">
+                {/* <div className="input-wrap">
                   <Input
                     type="text"
                     label="Emergency contact name"
@@ -152,7 +152,7 @@ const SignUp = () => {
                     })}
                     error={errors.contact_number?.message}
                   />
-                </div>
+                </div> */}
                 <div className="btn-holder">
                   <Button width="200px">Continue</Button>
                 </div>

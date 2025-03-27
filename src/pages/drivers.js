@@ -156,12 +156,14 @@ const Drivers = () => {
       {driverData?.length ? (
         <>
           <HeadingSection>
-            <h1>Driver Management</h1>
-            <div className="add-order-btn">
-              <Button onClick={() => setCreateDriver(true)}>
-                <IoIosAdd size={25} />
-                Add New Driver
-              </Button>
+            <div className="drivers-head">
+              <h1>Driver Management</h1>
+              <div className="add-order-btn">
+                <Button onClick={() => setCreateDriver(true)}>
+                  <IoIosAdd size={25} />
+                  Add New Driver
+                </Button>
+              </div>
             </div>
           </HeadingSection>
           <div className="table-holder">

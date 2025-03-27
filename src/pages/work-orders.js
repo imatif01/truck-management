@@ -144,16 +144,18 @@ const WorkOrder = () => {
             child={<NewOrder setCreateOrder={setCreateOrder} />}
           />
           <HeadingSection>
-            <h1>Work Order Management</h1>
-            <div className="btn-holder">
-              <Button variant="white" width="120px">
-                <Image src={importIcon} alt="importIcon" />
-                Import
-              </Button>
-              <Button onClick={() => setCreateOrder(true)}>
-                <IoIosAdd size={25} />
-                Create new Order
-              </Button>
+            <div className="work-head">
+              <h1>Work Order Management</h1>
+              <div className="btn-holder">
+                <Button variant="white" width="120px">
+                  <Image src={importIcon} alt="importIcon" />
+                  Import
+                </Button>
+                <Button onClick={() => setCreateOrder(true)}>
+                  <IoIosAdd size={25} />
+                  Create new Order
+                </Button>
+              </div>
             </div>
           </HeadingSection>
           <div className="table-holder">

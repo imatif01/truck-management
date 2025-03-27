@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { StyledSideBar } from './SideBar.styles';
 import logo from '@/assets/images/logo.svg';
 import dashboardIcon from '@/assets/images/dashboard-icon.svg';
@@ -12,6 +12,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { IoCloseOutline } from 'react-icons/io5';
+import { useRouter } from 'next/router';
 
 const sideBarData = [
   {
@@ -52,16 +53,52 @@ const sideBarData = [
 ];
 
 const SideBar = () => {
-  const [activePage, setActivePage] = useState(0);
+  const navRef = useRef(null);
+  const router = useRouter();
   const pathname = usePathname();
 
-  function handleClick() {
-    document.body.classList.remove('nav-active');
+  function handleMenu() {
+    if (typeof window !== 'undefined') {
+      document.body.classList.toggle('nav-active');
+    }
   }
 
+  useEffect(() => {
+    if (typeof window === 'undefined') return;
+    function handleClickOutside(event) {
+      if (navRef.current && !navRef.current.contains(event.target)) {
+        document.body.classList.remove('nav-active');
+      }
+    }
+
+    document.addEventListener('mousedown', handleClickOutside);
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside);
+    };
+  }, [navRef]);
+
+  useEffect(() => {
+    if (typeof window === 'undefined') return;
+    const handleRouteChangeStart = () => {
+      document.body.classList.remove('nav-active');
+    };
+
+    const handleRouteChangeComplete = () => {
+      document.body.classList.remove('nav-active');
+    };
+
+    router.events.on('routeChangeStart', handleRouteChangeStart);
+    router.events.on('routeChangeComplete', handleRouteChangeComplete);
+
+    return () => {
+      router.events.off('routeChangeStart', handleRouteChangeStart);
+      router.events.off('routeChangeComplete', handleRouteChangeComplete);
+      window.onload = null;
+    };
+  }, [router]);
   return (
-    <StyledSideBar>
-      <div className="close-icon" onClick={handleClick}>
+    <StyledSideBar ref={navRef}>
+      <div className="close-icon" onClick={handleMenu}>
         <IoCloseOutline size={25} />
       </div>
       <figure className="logo-holder">

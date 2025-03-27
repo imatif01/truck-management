@@ -18,7 +18,6 @@ const Header = () => {
     <StyledHeader>
       <div>
         <span className="name">Hi, Tynisha!</span>
-        <span className="text">Let’s check your store today</span>
       </div>
 
       <div className="info-holder">

@@ -1,14 +1,30 @@
 import styled from 'styled-components';
 
 export const StyledHeadingSection = styled.div`
-  position: relative;
+  display: flex;
+  align-items: flex-start;
+  gap: 20px;
   margin: 0 0 20px;
 
   @media (min-width: 768px) {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
     margin: 0 0 30px;
+  }
+
+  .work-head,
+  .drivers-head {
+    width: 100%;
+    @media (min-width: 768px) {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    button {
+      @media (max-width: 767px) {
+        width: auto;
+        min-width: max-content;
+      }
+    }
   }
 
   .btn-holder {
@@ -35,9 +51,6 @@ export const StyledHeadingSection = styled.div`
 
   .hamburger {
     display: block;
-    position: absolute;
-    top: -25px;
-    left: 0;
 
     @media (min-width: 1200px) {
       display: none;
