@@ -12,7 +12,6 @@ import { useRouter } from 'next/router';
 const SignUp = () => {
   const router = useRouter();
   const [step, setStep] = useState(1);
-  const [selectedOption, setSelectedOption] = useState('Male');
 
   const {
     register,
@@ -71,48 +70,7 @@ const SignUp = () => {
                     error={errors.phone?.message}
                   />
                 </div>
-                {/* <div className="input-wrap">
-                  <Input
-                    type="date"
-                    label="Date of Birth"
-                    {...register('d_o_b', {
-                      required: 'Please enter your date of birth',
-                    })}
-                    error={errors.d_o_b?.message}
-                  />
-                  <div>
-                    <span className="checkbox-heading">Gender</span>
-                    <div className="input-wrap">
-                      <div className="checkbox-holder">
-                        <CheckBox
-                          type="radio"
-                          label="Male"
-                          fieldName="gender_male"
-                          value={selectedOption === 'Male'}
-                          onChange={() => setSelectedOption('Male')}
-                        />
-                      </div>
-                      <div className="checkbox-holder">
-                        <CheckBox
-                          type="radio"
-                          label="Female"
-                          fieldName="gender_female"
-                          value={selectedOption === 'Female'}
-                          onChange={() => setSelectedOption('Female')}
-                        />
-                      </div>
-                      <div className="checkbox-holder">
-                        <CheckBox
-                          type="radio"
-                          label="Other"
-                          fieldName="gender_other"
-                          value={selectedOption === 'Other'}
-                          onChange={() => setSelectedOption('Other')}
-                        />
-                      </div>
-                    </div>
-                  </div>
-                </div> */}
+
                 <div className="input-wrap">
                   <Input
                     type="text"
@@ -133,26 +91,7 @@ const SignUp = () => {
                     error={errors.occupation?.message}
                   />
                 </div>
-                {/* <div className="input-wrap">
-                  <Input
-                    type="text"
-                    label="Emergency contact name"
-                    placeholder="Enter contact name"
-                    {...register('contact_name', {
-                      required: 'Please enter your contact name',
-                    })}
-                    error={errors.contact_name?.message}
-                  />
-                  <Input
-                    type="phone"
-                    label="Emergency contact number"
-                    placeholder="Enter contact number"
-                    {...register('contact_number', {
-                      required: 'Please enter your contact number',
-                    })}
-                    error={errors.contact_number?.message}
-                  />
-                </div> */}
+
                 <div className="btn-holder">
                   <Button width="200px">Continue</Button>
                 </div>

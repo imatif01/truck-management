@@ -100,16 +100,5 @@ export const StyledLoginTemplate = styled.div`
       display: flex;
       gap: 20px;
     }
-
-    .checkbox-heading {
-      display: block;
-      margin: 0 0 15px;
-    }
-
-    .checkbox-holder {
-      padding: 10px;
-      border: 1px dashed var(--gray-50);
-      border-radius: 8px;
-    }
   }
 `;

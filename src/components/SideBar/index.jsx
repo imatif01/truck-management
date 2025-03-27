@@ -31,16 +31,6 @@ const sideBarData = [
     link: '/drivers',
   },
   {
-    icon: financeIcon,
-    label: 'Payout & Finance',
-    link: '/payout',
-  },
-  {
-    icon: reportIcon,
-    label: 'Reports & Analysis',
-    link: '/reports',
-  },
-  {
     icon: settingIcon,
     label: 'Settings',
     link: '/setting',
