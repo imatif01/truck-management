@@ -86,6 +86,7 @@ const SideBar = () => {
       window.onload = null;
     };
   }, [router]);
+
   return (
     <StyledSideBar ref={navRef}>
       <div className="close-icon" onClick={handleMenu}>
