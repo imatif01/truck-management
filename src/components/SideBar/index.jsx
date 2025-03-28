@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { StyledSideBar } from './SideBar.styles';
-import logo from '@/assets/images/logo.svg';
+import logo from '@/assets/images/logo.png';
 import dashboardIcon from '@/assets/images/dashboard-icon.svg';
 import orderIcon from '@/assets/images/order-icon.svg';
 import driverIcon from '@/assets/images/driver-icon.svg';
